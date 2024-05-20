@@ -6,10 +6,12 @@ import requests
 from datetime import datetime
 import traceback
 
-THIS_DIR = "/home/abdurrahman/Downloads/Spec_Pro"
+THIS_DIR = "/home/client4/Workspace"
 GPS_OUT = f"{THIS_DIR}/latest_gps.txt"
 FAILURE_LOG_OUT = f"{THIS_DIR}/failures.log"
 SERVER_URL = "http://20.93.2.23:5000/data"  # Replace with your server IP and port
+IMSI = "999408000000101"
+CLIENT = "Client_1"
 
 def log_error():
     now = datetime.now()
@@ -27,7 +29,6 @@ def run_command(command):
 def extract_throughput_se(iperf_output):
     for line in iperf_output.split('\n'):
         if 'sender' in line:
-        
             sender_val = line.split()[-4]
             return float(sender_val)
 
@@ -91,7 +92,8 @@ def main():
     now = datetime.now()
     time = int(now.timestamp())
     data = {
-        "client": "My_PC",
+        "client": CLIENT,
+        "IMSI" : IMSI,
         "timestamp": time,
         "Throughput Sender(Mbit/s)": throughput_se,
         "Throughput Reciever(Mbit/s)": throughput_re,
