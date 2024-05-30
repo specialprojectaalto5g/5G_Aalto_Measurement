@@ -20,6 +20,7 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt install -y python3 python3-pip
 sudo pip3 install pymongo
+sudo pip3 install requests
 sudo apt install -y iperf3
 
 ---------------------
