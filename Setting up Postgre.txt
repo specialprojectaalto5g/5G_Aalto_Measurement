@@ -9,3 +9,28 @@ sudo systemctl restart postgresql
 #Allowing Ports & Checking Status
 ufw allow 5432
 sudo systemctl status postgresql
+
+#Change to Master User to Login
+root@qos:/home/rahmana7# sudo -i -u postgres
+postgres@qos:~$ psql
+psql (16.3 (Ubuntu 16.3-1.pgdg22.04+1), server 15.7 (Ubuntu 15.7-1.pgdg22.04+1))
+Type "help" for help.
+#Create a New Database
+postgres-# CREATE DATABASE test;
+#Create a New User 
+postgres-# CREATE USER test WITH ENCRYPTED PASSWORD 'test';
+postgres-# GRANT ALL PRIVILEGES ON DATABASE test TO test;
+
+#Create a table to insert Data
+postgres=# CREATE TABLE network_metrics (
+    id SERIAL PRIMARY KEY,
+    _id VARCHAR(24),
+    client VARCHAR(50),
+    timestamp BIGINT,
+    rtt_client_ns BIGINT,
+    rtt_server_ns BIGINT,
+    dl_throughput_kbps FLOAT,
+    ul_throughput_kbps FLOAT,
+    lat FLOAT,
+    lon FLOAT
+);
