@@ -1,0 +1,11 @@
+sudo apt update
+sudo apt install postgresql
+
+#Setting Permissions for Access
+nano /etc/postgresql/*/main/pg_hba.conf
+nano /etc/postgresql/*/main/pg_hba.conf
+sudo systemctl restart postgresql
+
+#Allowing Ports & Checking Status
+ufw allow 5432
+sudo systemctl status postgresql
