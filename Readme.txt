@@ -7,7 +7,7 @@ Run the following commands on a fresh Ubuntu VM
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt install iperf3
-sudo pip3 install flask pymongo
+sudo pip3 install psycopg2-binary
 
 After running these commands execute the "server.sh" file with admin privileges to run three instances for 3 clients.
 
